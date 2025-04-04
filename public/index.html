@@ -1,13 +1,47 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8"/>
-    <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>ZOMATO</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zomato Clone</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <h1 class="logo">zomato</h1>
+            <ul class="nav-links">
+                <li><a href="#">Add Restaurant</a></li>
+                <li><a href="#">Log in</a></li>
+                <li><a href="#">Sign up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <h2>Find the best restaurants, cafés, and bars in India</h2>
+        </div>
+    </section>
+
+    <!-- Popular Locations -->
+    <section class="locations">
+        <h3>Popular locations in <span>🇮🇳 India</span></h3>
+        <div class="search">
+            <input type="text" id="searchBox" placeholder="Search for restaurants...">
+            <button onclick="searchRestaurants()">Search</button>
+        </div>
+        <div id="searchResults"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Zomato Clone. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
