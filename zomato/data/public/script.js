@@ -1,5 +1,19 @@
 async function loadRestaurants() {
-    const res = await fetch('/restaurants');
+  const BASE_URL = 'https://your-backend-name.onrender.com'; 
+  async function loadRestaurants() {
+    const res = await fetch(`${BASE_URL}/restaurants`);
+    const restaurants = await res.json();
+    const list = document.getElementById('restaurant-list');
+    list.innerHTML = '';
+    restaurants.forEach(r => {
+      const item = document.createElement('li');
+      item.textContent = `${r.name} - ${r.cuisine} - ${r.location}`;
+      list.appendChild(item);
+    });
+  }
+  
+  loadRestaurants();
+  
     const data = await res.json();
     const list = document.getElementById('restaurantList');
     list.innerHTML = '';
@@ -23,7 +37,4 @@ async function loadRestaurants() {
   
     loadRestaurants();
   }
-  
-  // Load on startup
-  window.onload = loadRestaurants;
   
