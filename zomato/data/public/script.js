@@ -29,10 +29,10 @@ async function loadRestaurants() {
     const location = document.getElementById('rlocation').value;
     const cuisine = document.getElementById('rcuisine').value;
   
-    await fetch('/restaurants', {
+    await fetch(`${BASE_URL}/restaurants`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, location, cuisine })
+      body: JSON.stringify(data)
     });
   
     loadRestaurants();
