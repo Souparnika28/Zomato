@@ -49,4 +49,4 @@ app.delete('/api/restaurants/:id', (req, res) => {
     res.json({ message: 'Deleted' });
   });
   
-  app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+  app.listen(PORT, () => console.log(`Server running on http://localhost:3000`));
