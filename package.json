@@ -1,16 +1,15 @@
 {
   "name": "zomato",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
-  "start": "node backend/server.js",
-  "dev": "nodemon backend/server.js",
-  "test": "jest"
-}
-  ,"keywords": [],
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "test": "jest"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "body-parser": "^2.2.0",
     "express": "^5.1.0",
@@ -19,5 +18,14 @@
   "devDependencies": {
     "jest": "^29.7.0",
     "supertest": "^7.1.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/souparnika28/Zomato.git"
+  },
+  "bugs": {
+    "url": "https://github.com/souparnika28/Zomato/issues"
+  },
+  "homepage": "https://github.com/souparnika28/Zomato#readme",
+  "description": ""
 }

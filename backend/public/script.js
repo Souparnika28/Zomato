@@ -1,34 +1,10 @@
-const listEl = document.getElementById('restaurantList');
+// Example of event handling for the "View Details" button on each restaurant card
 
-function loadRestaurants() {
-  fetch('/api/restaurants')
-    .then(res => res.json())
-    .then(data => {
-      listEl.innerHTML = '';
-      data.forEach(r => {
-        const li = document.createElement('li');
-        li.textContent = `${r.name} `;
-        const delBtn = document.createElement('button');
-        delBtn.textContent = 'Delete';
-        delBtn.onclick = () => deleteRestaurant(r.id);
-        li.appendChild(delBtn);
-        listEl.appendChild(li);
-      });
-    });
-}
+const buttons = document.querySelectorAll('.restaurant-card button');
 
-function addRestaurant() {
-  const name = document.getElementById('name').value;
-  fetch('/api/restaurants', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name })
-  }).then(loadRestaurants);
-}
-
-function deleteRestaurant(id) {
-  fetch(`/api/restaurants/${id}`, { method: 'DELETE' })
-    .then(loadRestaurants);
-}
-
-loadRestaurants();
+buttons.forEach(button => {
+  button.addEventListener('click', (event) => {
+    const restaurantName = event.target.closest('.restaurant-card').querySelector('h3').textContent;
+    alert(`You clicked on: ${restaurantName}`);
+  });
+});
