@@ -1,19 +1,24 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
-  res.send('Hello, this is the API backend!');
-});
+// Middleware setup
+app.use(cors());
+app.use(bodyParser.json());
 
-app.get('/restaurants', (req, res) => {
-  const restaurants = [
-    { id: 1, name: 'Restaurant A' },
-    { id: 2, name: 'Restaurant B' },
-  ];
-  res.json(restaurants);
-});
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost/zomato', { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('Connected to MongoDB'))
+    .catch(err => console.log('Failed to connect to MongoDB:', err));
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:3000`);
+// Import routes
+const apiRoutes = require('./routes/api');
+app.use('/api', apiRoutes);
+
+// Start server
+app.listen(5000, () => {
+    console.log('Server running on http://localhost:5000');
 });

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zomato</title>
+</head>
+<body>
+    <h1>Zomato</h1>
+
+    <!-- Add Restaurant Form -->
+    <h2>Add Restaurant</h2>
+    <form id="addRestaurantForm">
+        <label for="name">Restaurant Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location"><br>
+        <label for="cuisine">Cuisine:</label>
+        <input type="text" id="cuisine" name="cuisine"><br>
+        <label for="rating">Rating:</label>
+        <input type="number" id="rating" name="rating" min="1" max="5" required><br>
+        <button type="submit">Add Restaurant</button>
+    </form>
+
+    <h2>Restaurants List</h2>
+    <ul id="restaurantList"></ul>
+
+    <script>
+        const apiUrl = 'http://localhost:5000/api/restaurants';
+
+        // Fetch and display restaurants
+        async function fetchRestaurants() {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+            const restaurantList = document.getElementById('restaurantList');
+            restaurantList.innerHTML = '';
+            data.forEach(restaurant => {
+                const li = document.createElement('li');
+                li.textContent = `${restaurant.name} - ${restaurant.location} - ${restaurant.rating} stars`;
+                restaurantList.appendChild(li);
+            });
+        }
+
+        // Handle form submission to add a new restaurant
+        document.getElementById('addRestaurantForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const newRestaurant = {
+                name: document.getElementById('name').value,
+                location: document.getElementById('location').value,
+                cuisine: document.getElementById('cuisine').value,
+                rating: document.getElementById('rating').value
+            };
+
+            await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newRestaurant)
+            });
+
+            fetchRestaurants();
+        });
+
+        // Fetch initial restaurant list
+        fetchRestaurants();
+    </script>
+</body>
+</html>
