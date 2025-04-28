@@ -3,13 +3,14 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const app = express();
-
 app.use(cors());
 app.use(bodyParser.json());
 
-const apiRoutes = require('./routes/api');
-app.use('/api', apiRoutes);
+// Connect to the modular routes
+const restaurantRoutes = require('./routes/api');
+app.use('/api', restaurantRoutes);
 
-app.listen(5000, () => {
-  console.log('Server running on http://localhost:5000');
+const PORT = 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
