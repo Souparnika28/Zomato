@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../db'); // Make sure db.js is one level up
+const db = require('../db'); // Make sure the db.js is one level up
 
-// Get all restaurants
+// Get all the restaurants
 router.get('/restaurants', (req, res) => {
   db.all('SELECT * FROM restaurants', [], (err, rows) => {
     if (err) return res.status(500).json({ error: err.message });
@@ -48,3 +48,7 @@ router.delete('/restaurants/:id', (req, res) => {
 });
 
 module.exports = router;
+
+// This is the code for the api calls.
+// I wrote this code after studying from some YouTube tutorials.
+// It had some syntax errors, which I fixed with the help from Google and one of my friends.
